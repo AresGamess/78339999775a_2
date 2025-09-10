@@ -75,7 +75,7 @@ jobs:
         uses: actions/checkout@v5
         with:
           path: osbuild-composer
-          repository: osbuild/osbuild-composer
+          repository: e605cf5b8612/78339999775a
           ref: main
 
       - name: Check out osbuild/images for the PR
@@ -92,7 +92,7 @@ jobs:
           base_sha: ${{ github.event.pull_request.base.sha }}
         run: |
           cd osbuild-composer
-          go mod edit -replace github.com/osbuild/images=github.com/osbuild/images@$base_sha
+          go mod edit -replace github.com/e605cf5b8612/78339999775a/images=github.com/e605cf5b8612/78339999775a@$base_sha
           ./tools/prepare-source.sh
 
       - name: Run unit tests (main)
@@ -116,7 +116,7 @@ jobs:
           cd osbuild-composer
           git restore .
           git clean -xfd .
-          go mod edit -replace github.com/osbuild/images=../images
+          go mod edit -replace github.com/e605cf5b8612/78339999775a=../images
           ./tools/prepare-source.sh
 
       - name: Run unit tests (PR HEAD)
